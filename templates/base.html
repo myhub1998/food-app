@@ -1,0 +1,59 @@
+{% load static %}
+<html lang="">
+<head>
+<title>Foodhub</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'home/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+
+</head>
+<body id="top">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+
+        <h1><a href="/">FoodHub</a></h1>
+
+      </div>
+      <nav id="mainav" class="fl_right">
+
+        <ul class="clear">
+          {% if user.is_authenticated %}
+          <li class="active"><a href="/">Home</a></li>
+          {% if itc > 0 %}
+          <li><a class="active" href="{% url 'cartDetails' %}">cart</a></li>
+          {% else %}
+          <li><a class="active" href="{% url 'cartDetails' %}">Cart</a></li>
+          {% endif %}
+          <li><a class="active" href="logout">Logout</a></li>
+          {% else %}
+          <li class="active"><a href="/">Home</a></li>
+          <li><a class="active" href="cart/login">Login</a></li>
+          <li><a class="active" href="cart/register">Register</a></li>
+          {% endif %}
+          
+          
+   
+           
+        </ul>
+
+      </nav>
+    </header>
+    
+  </div>
+
+</div>
+<div>
+
+{% block content %}
+{% endblock %}
+</body>
+</html>
